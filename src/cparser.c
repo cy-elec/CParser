@@ -12,19 +12,19 @@
 #include "cparser.h"
 
 
-int parser_parse(int argc, char *argv[], struct parser_dict *input_dict) {
+int cparser_parse(int argc, char *argv[], struct cparser_dict *input_dict) {
 	if(input_dict->kv)
-		parser_free(input_dict);
+		cparser_free(input_dict);
 	input_dict->kvn = 0;
 	
 	for(int i=1; i<argc; i++) {
 		if(argv[i][0]=='-') {
 			
 			if(argv[i][1]=='-') {
-				if(parse_doubledash(&argv[i][2], input_dict)) goto errexit;
+				if(cparse_doubledash(&argv[i][2], input_dict)) goto errexit;
 			}
 			else {
-				if(parse_dash(&argv[i][1], input_dict)) goto errexit;
+				if(cparse_dash(&argv[i][1], input_dict)) goto errexit;
 			}
 		}
 	}
@@ -33,11 +33,11 @@ int parser_parse(int argc, char *argv[], struct parser_dict *input_dict) {
 
 	errexit:
 	if(input_dict)
-		parser_free(input_dict);
+		cparser_free(input_dict);
 	return -1;
 }
 
-int parser_parseSpace(int argc, char *argv[], struct parser_dict *input_dict) {
+int cparser_parseSpace(int argc, char *argv[], struct cparser_dict *input_dict) {
 
 	char *margv[argc];
 	int margc = argc;
@@ -69,7 +69,7 @@ int parser_parseSpace(int argc, char *argv[], struct parser_dict *input_dict) {
 		normal_arg:;
 	}
 
-	int rval = parser_parse(margc, margv, input_dict);
+	int rval = cparser_parse(margc, margv, input_dict);
 
 	for(int i=0; i<margc; i++) {
 		free(margv[i]);
@@ -80,11 +80,11 @@ int parser_parseSpace(int argc, char *argv[], struct parser_dict *input_dict) {
 
 	errexit:
 	if(input_dict)
-		parser_free(input_dict);
+		cparser_free(input_dict);
 	return -1;
 }
 
-int parser_hasKey(char *key, struct parser_dict *input_dict) {
+int cparser_hasKey(char *key, struct cparser_dict *input_dict) {
 	if(!key||!input_dict) 
 		return 0;
 	
@@ -94,7 +94,7 @@ int parser_hasKey(char *key, struct parser_dict *input_dict) {
 	return 0;
 }
 
-int parser_getValue(char *key, char *dest, struct parser_dict *input_dict) {
+int cparser_getValue(char *key, char *dest, struct cparser_dict *input_dict) {
 	if(!key||!input_dict||!dest) 
 		return 0;
 	
@@ -110,13 +110,13 @@ int parser_getValue(char *key, char *dest, struct parser_dict *input_dict) {
 }
 
 
-int parse_dash(char *argv,  struct parser_dict *input_dict) {
+int cparse_dash(char *argv,  struct cparser_dict *input_dict) {
 	if(!argv || !input_dict)
 		return 0;
 	
 	int ci = input_dict->kvn;
 	input_dict->kvn++;
-	void *temp = realloc(input_dict->kv, input_dict->kvn * sizeof(struct parser_kv));
+	void *temp = realloc(input_dict->kv, input_dict->kvn * sizeof(struct cparser_kv));
 	if(!temp)
 		return -1;
 	input_dict->kv = temp;
@@ -141,7 +141,7 @@ int parse_dash(char *argv,  struct parser_dict *input_dict) {
 	return 0;
 }
 
-int parse_doubledash(char *argv,  struct parser_dict *input_dict) {
+int cparse_doubledash(char *argv,  struct cparser_dict *input_dict) {
 	if(!argv || !input_dict)
 		return 0;
 	
@@ -155,7 +155,7 @@ int parse_doubledash(char *argv,  struct parser_dict *input_dict) {
 
 	int ci = input_dict->kvn;
 	input_dict->kvn++;
-	void *temp = realloc(input_dict->kv, input_dict->kvn * sizeof(struct parser_kv));
+	void *temp = realloc(input_dict->kv, input_dict->kvn * sizeof(struct cparser_kv));
 	if(!temp)
 		return -1;
 	input_dict->kv = temp;
@@ -179,7 +179,7 @@ int parse_doubledash(char *argv,  struct parser_dict *input_dict) {
 	return 0;
 }
 
-void parser_free(struct parser_dict *input_dict) {
+void cparser_free(struct cparser_dict *input_dict) {
 	if(input_dict) {
 		if(input_dict->kv) {
 			for(int i=0; i<input_dict->kvn; i++) {
@@ -198,7 +198,7 @@ void parser_free(struct parser_dict *input_dict) {
 	}
 }
 
-void parser_print(int fd,  struct parser_dict *input_dict) {
+void cparser_print(int fd,  struct cparser_dict *input_dict) {
 	FILE *fp = fdopen(dup(fd), "w");
 	if(!input_dict || !input_dict->kv) {
 		fprintf(fp, "NULL\n");

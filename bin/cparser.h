@@ -20,23 +20,23 @@
 #include <string.h>
 
 
-struct parser_kv {
+struct cparser_kv {
 	char *key;
 	char *val;
 };
-struct parser_dict {
+struct cparser_dict {
 	int kvn;
-	struct parser_kv *kv;
+	struct cparser_kv *kv;
 };
 
-int parser_parse(int, char**, struct parser_dict *);
-int parser_parseSpace(int, char**, struct parser_dict *);
-int parser_hasKey(char *, struct parser_dict *);
-int parser_getValue(char *, char *, struct parser_dict *);
+int cparser_parse(int, char**, struct cparser_dict *);
+int cparser_parseSpace(int, char**, struct cparser_dict *);
+int cparser_hasKey(char *, struct cparser_dict *);
+int cparser_getValue(char *, char *, struct cparser_dict *);
 
-int parse_dash(char *,  struct parser_dict *);
-int parse_doubledash(char *,  struct parser_dict *);
-void parser_free(struct parser_dict *);
-void parser_print(int, struct parser_dict *);
+int cparse_dash(char *,  struct cparser_dict *);
+int cparse_doubledash(char *,  struct cparser_dict *);
+void cparser_free(struct cparser_dict *);
+void cparser_print(int, struct cparser_dict *);
 
 #endif
