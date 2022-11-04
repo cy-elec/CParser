@@ -9,8 +9,8 @@
  * 
  */
 
-#ifndef _PARSER_H
-#define _PARSER_H
+#ifndef _CPARSER_H
+#define _CPARSER_H
 
 #include <sys/types.h>
 #include <fcntl.h>
