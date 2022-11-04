@@ -24,19 +24,19 @@ struct cparser_kv {
 	char *key;
 	char *val;
 };
-struct cparser_dict {
+typedef struct cparser_dict {
 	int kvn;
 	struct cparser_kv *kv;
-};
+} cparser_dict;
 
-int cparser_parse(int, char**, struct cparser_dict *);
-int cparser_parseSpace(int, char**, struct cparser_dict *);
-int cparser_hasKey(char *, struct cparser_dict *);
-int cparser_getValue(char *, char *, struct cparser_dict *);
+int cparser_parse(int, char**, cparser_dict *);
+int cparser_parseSpace(int, char**, cparser_dict *);
+int cparser_hasKey(char *, cparser_dict *);
+int cparser_getValue(char *, char *, cparser_dict *);
 
-int cparse_dash(char *,  struct cparser_dict *);
-int cparse_doubledash(char *,  struct cparser_dict *);
-void cparser_free(struct cparser_dict *);
-void cparser_print(int, struct cparser_dict *);
+int cparse_dash(char *,  cparser_dict *);
+int cparse_doubledash(char *,  cparser_dict *);
+void cparser_free(cparser_dict *);
+void cparser_print(int, cparser_dict *);
 
 #endif

@@ -12,7 +12,7 @@
 #include "cparser.h"
 
 
-int cparser_parse(int argc, char *argv[], struct cparser_dict *input_dict) {
+int cparser_parse(int argc, char *argv[], cparser_dict *input_dict) {
 	if(input_dict->kv)
 		cparser_free(input_dict);
 	input_dict->kvn = 0;
@@ -37,7 +37,7 @@ int cparser_parse(int argc, char *argv[], struct cparser_dict *input_dict) {
 	return -1;
 }
 
-int cparser_parseSpace(int argc, char *argv[], struct cparser_dict *input_dict) {
+int cparser_parseSpace(int argc, char *argv[], cparser_dict *input_dict) {
 
 	char *margv[argc];
 	int margc = argc;
@@ -84,7 +84,7 @@ int cparser_parseSpace(int argc, char *argv[], struct cparser_dict *input_dict) 
 	return -1;
 }
 
-int cparser_hasKey(char *key, struct cparser_dict *input_dict) {
+int cparser_hasKey(char *key, cparser_dict *input_dict) {
 	if(!key||!input_dict) 
 		return 0;
 	
@@ -94,7 +94,7 @@ int cparser_hasKey(char *key, struct cparser_dict *input_dict) {
 	return 0;
 }
 
-int cparser_getValue(char *key, char *dest, struct cparser_dict *input_dict) {
+int cparser_getValue(char *key, char *dest, cparser_dict *input_dict) {
 	if(!key||!input_dict||!dest) 
 		return 0;
 	
@@ -110,7 +110,7 @@ int cparser_getValue(char *key, char *dest, struct cparser_dict *input_dict) {
 }
 
 
-int cparse_dash(char *argv,  struct cparser_dict *input_dict) {
+int cparse_dash(char *argv,  cparser_dict *input_dict) {
 	if(!argv || !input_dict)
 		return 0;
 	
@@ -141,7 +141,7 @@ int cparse_dash(char *argv,  struct cparser_dict *input_dict) {
 	return 0;
 }
 
-int cparse_doubledash(char *argv,  struct cparser_dict *input_dict) {
+int cparse_doubledash(char *argv,  cparser_dict *input_dict) {
 	if(!argv || !input_dict)
 		return 0;
 	
@@ -179,7 +179,7 @@ int cparse_doubledash(char *argv,  struct cparser_dict *input_dict) {
 	return 0;
 }
 
-void cparser_free(struct cparser_dict *input_dict) {
+void cparser_free(cparser_dict *input_dict) {
 	if(input_dict) {
 		if(input_dict->kv) {
 			for(int i=0; i<input_dict->kvn; i++) {
@@ -198,7 +198,7 @@ void cparser_free(struct cparser_dict *input_dict) {
 	}
 }
 
-void cparser_print(int fd,  struct cparser_dict *input_dict) {
+void cparser_print(int fd,  cparser_dict *input_dict) {
 	FILE *fp = fdopen(dup(fd), "w");
 	if(!input_dict || !input_dict->kv) {
 		fprintf(fp, "NULL\n");
