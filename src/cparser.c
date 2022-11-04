@@ -1,5 +1,5 @@
 /**
- * @file parse.c
+ * @file cparser.c
  * @author Felix Kröhnert (felix.kroehnert@online.de)
  * @brief 
  * @version 0.1
@@ -9,7 +9,7 @@
  * 
  */
 
-#include "parser.h"
+#include "cparser.h"
 
 
 int parser_parse(int argc, char *argv[], struct parser_dict *input_dict) {
@@ -48,7 +48,7 @@ int parser_parseSpace(int argc, char *argv[], struct parser_dict *input_dict) {
 		margv[i-(argc-margc)][strlen(argv[i])] = 0;
 
 		if(argv[i][0]=='-'&&strlen(argv[i])>1&&argv[i][1]=='-') {
-			for(int d=0; d<strlen(argv[i]); d++) {
+			for(size_t d=0; d<strlen(argv[i]); d++) {
 				if(argv[i][d] == '=') {
 					goto normal_arg;
 				}
