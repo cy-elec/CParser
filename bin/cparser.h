@@ -1,7 +1,7 @@
 /**
  * @file cparser.h
  * @author Felix Kröhnert (felix.kroehnert@online.de)
- * @brief 
+ * @brief Command line argument parser interface
  * @version 0.1
  * @date 2022-10-22
  * 
