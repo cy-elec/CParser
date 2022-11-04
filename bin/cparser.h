@@ -28,16 +28,16 @@ struct cparser_kv {
 typedef struct cparser_dict {
 	int kvn;
 	struct cparser_kv *kv;
-} cparser_dict;
+} cparser_dict_t;
 
-int cparser_parse(int, char**, cparser_dict *);
-int cparser_parseSpace(int, char**, cparser_dict *);
-int cparser_hasKey(char *, cparser_dict *);
-int cparser_getValue(char *, char *, cparser_dict *);
+int cparser_parse(int, char**, cparser_dict_t *);
+int cparser_parseSpace(int, char**, cparser_dict_t *);
+int cparser_hasKey(char *, cparser_dict_t *);
+int cparser_getValue(char *, char *, cparser_dict_t *);
 
-int cparse_dash(char *,  cparser_dict *);
-int cparse_doubledash(char *,  cparser_dict *);
-void cparser_free(cparser_dict *);
-void cparser_print(int, cparser_dict *);
+int cparse_dash(char *,  cparser_dict_t *);
+int cparse_doubledash(char *,  cparser_dict_t *);
+void cparser_free(cparser_dict_t *);
+void cparser_print(int, cparser_dict_t *);
 
 #endif
