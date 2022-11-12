@@ -1,1 +1,3 @@
 *.o
+*.exe
+!exmpl/bin/*
