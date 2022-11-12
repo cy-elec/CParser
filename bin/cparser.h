@@ -33,8 +33,8 @@ int cparser_parseSpace(int, char**, cparser_dict_t *);
 int cparser_hasKey(char *, cparser_dict_t *);
 int cparser_getValue(char *, char *, cparser_dict_t *);
 
-int cparse_dash(char *,  cparser_dict_t *);
-int cparse_doubledash(char *,  cparser_dict_t *);
+static int cparse_dash(char *,  cparser_dict_t *);
+static int cparse_doubledash(char *,  cparser_dict_t *);
 void cparser_free(cparser_dict_t *);
 void cparser_print(int, cparser_dict_t *);
 

@@ -110,7 +110,7 @@ int cparser_getValue(char *key, char *dest, cparser_dict_t *input_dict) {
 }
 
 
-int cparse_dash(char *argv,  cparser_dict_t *input_dict) {
+static int cparse_dash(char *argv,  cparser_dict_t *input_dict) {
 	if(!argv || !input_dict)
 		return 0;
 	
@@ -141,7 +141,7 @@ int cparse_dash(char *argv,  cparser_dict_t *input_dict) {
 	return 0;
 }
 
-int cparse_doubledash(char *argv,  cparser_dict_t *input_dict) {
+static int cparse_doubledash(char *argv,  cparser_dict_t *input_dict) {
 	if(!argv || !input_dict)
 		return 0;
 	
