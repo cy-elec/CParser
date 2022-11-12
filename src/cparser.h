@@ -13,8 +13,6 @@
 #ifndef _CPARSER_H
 #define _CPARSER_H
 
-#include <sys/types.h>
-#include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
