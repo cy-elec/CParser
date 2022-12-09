@@ -7,6 +7,8 @@
  * 
  * @copyright Copyright (c) 2022
  * 
+ * This library is distributed under the terms of the MIT License and WITHOUT ANY WARRANTY
+ * 
  */
 
 
