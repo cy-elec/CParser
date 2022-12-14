@@ -106,4 +106,3 @@ typedef struct cparser_dict {
   |**description**|Obtains the value of a requested key and copies it to the destination location.|
   |**params**|_pointer to the requested key_ `char *key`, _pointer to destination buffer_ `char *dest`, _pointer to a cparser dictionary_ `cparser_dict_t *input_dict`|
   |**return**|`int` - On success, return 1, otherwise return 0.|
-
