@@ -95,7 +95,7 @@ typedef struct cparser_dict {
 
   |||
   --|--
-  |**description**||
+  |**description**|Checks if key has been resolved.|
   |**params**|_pointer to the requested key_ `char *key`, _pointer to a cparser dictionary_ `cparser_dict_t *input_dict`|
   |**return**|`int` - Return 1 when the requested key is part of the cparser dictionary, otherwise return 0.|
 
