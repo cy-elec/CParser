@@ -19,7 +19,7 @@ Both functions require a key-value-pair [cparser_dict](#structures-and-types) to
     1. Compile the code statically using gcc:
 
      ```bash
-     gcc.exe -o <filename>.exe <filename>.c -l:libcparser.lib -lws2_32 -L<libpath> -I<libpath>
+     gcc.exe -o <filename>.exe <filename>.c -l:libcparser.lib -L<libpath> -I<libpath>
      ```
 
 * *nix:
@@ -28,7 +28,7 @@ Both functions require a key-value-pair [cparser_dict](#structures-and-types) to
     1. Compile the code statically using gcc:
 
      ```bash
-     gcc -o <filename>.o <filename>.c -l:libcparser.a -lws2_32 -L<libpath> -I<libpath>
+     gcc -o <filename>.o <filename>.c -l:libcparser.a -L<libpath> -I<libpath>
      ```
 
 ## Dependencies
