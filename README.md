@@ -61,7 +61,7 @@ typedef struct cparser_dict {
 
   |||
   --|--
-  |**description**|Parses key-value-pairs from a given input buffer of strings. Single dashes imply a single character argument. Their key is the first character after the dash, their value all other characters until the next whitespace or line end. Double dashes imply a word argument. Their key is the whole word - all characters until an equals sign or a whitespace or a line end, whichever comes first - after the double dash, their value all other character after the first equals sign until the next whitespace or line end.|
+  |**description**|Parses key-value-pairs from a given input buffer of strings. Single dashes imply a single character argument. Their key is the first character after the dash, their value all other characters until the next whitespace or line end. Double dashes imply a word argument. Their key is the whole word - all characters until an equals sign or a whitespace or a line end, whichever comes first - after the double dash, their value will be every character after the first equals sign until the next whitespace or line end.|
   |**params**|_number of buffer elements_ `int argc`, _pointer to buffer of strings_ `char *argv[]`, _pointer to a cparser dictionary_ `cparser_dict_t *input_dict`|
   |**return**|`int` - On success, return 1, otherwise return -1.|
 
